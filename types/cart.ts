@@ -1,17 +1,18 @@
+import { Product } from './product'
+
 export interface CartItem {
-  id: string
-  productId: string
-  name: string
-  price: number
-  quantity: number
-  imageUrl: string
+    id: string
+    cartId: string
+    cart: Cart
+    productId: string
+    product: Product
+    quantity: number
+    createdAt: string
+    updatedAt: string
 }
 
 export interface Cart {
-  id: string
-  items: CartItem[]
-  subtotal: number
-  discount: number
-  total: number
+    id: string
+    items: CartItem[]
+    userId: string
 }
-

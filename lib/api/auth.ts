@@ -59,9 +59,9 @@ export async function refreshTokens(refreshToken: string): Promise<{ user: User;
         const response = await $fetch(`/auth/refresh`, {
             method: 'POST',
             headers: {
+                Authorization: `Bearer ${refreshToken}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ refreshToken }),
         })
 
         if (!response.ok) {

@@ -9,6 +9,7 @@ interface FilterSidebarProps {
     category?: string
     minPrice?: number
     maxPrice?: number
+    isSale?: boolean
     categories: Category[]
 }
 
@@ -16,6 +17,7 @@ export default function FilterSidebar({
     category: initialCategory = '',
     minPrice: initialMinPrice,
     maxPrice: initialMaxPrice,
+    isSale: initialIsSale,
     categories,
 }: FilterSidebarProps) {
     const router = useRouter()
@@ -27,6 +29,7 @@ export default function FilterSidebar({
         min: initialMinPrice || 0,
         max: initialMaxPrice || 100000,
     })
+    const [isSale, setIsSale] = useState(initialIsSale)
     const [expandedSections, setExpandedSections] = useState({
         categories: true,
         price: true,
@@ -50,6 +53,15 @@ export default function FilterSidebar({
         setPriceRange((prev) => ({ ...prev, [type]: numValue }))
     }
 
+    const handleIsSale = () => {
+        setIsSale((prev) => !prev)
+        if (!isSale) {
+            updateFilters({ isSale: !isSale })
+        } else {
+            updateFilters({ isSale: undefined })
+        }
+    }
+
     const applyPriceFilter = () => {
         updateFilters({
             minPrice: priceRange.min > 0 ? priceRange.min : undefined,
@@ -69,7 +81,6 @@ export default function FilterSidebar({
             }
         })
 
-        // Reset to page 1 when filters change
         params.set('page', '1')
 
         router.push(`${pathname}?${params.toString()}`)
@@ -108,6 +119,18 @@ export default function FilterSidebar({
                         ))}
                     </div>
                 )}
+            </div>
+
+            <div className="border-t pt-6">
+                <label className="flex items-center cursor-pointer">
+                    <input
+                        type="checkbox"
+                        checked={isSale === true}
+                        onChange={handleIsSale}
+                        className="h-4 w-4 rounded border-gray-300 text-gray-800 focus:ring-gray-800"
+                    />
+                    <span className="ml-2 text-gray-700">По акции</span>
+                </label>
             </div>
 
             <div className="border-t pt-6">

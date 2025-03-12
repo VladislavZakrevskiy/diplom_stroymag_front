@@ -9,6 +9,7 @@ interface ProductGridProps {
     sort?: string
     minPrice?: number
     maxPrice?: number
+    isSale?: boolean
 }
 
 export default async function ProductGrid({
@@ -18,6 +19,7 @@ export default async function ProductGrid({
     sort = 'popular',
     minPrice,
     maxPrice,
+    isSale,
 }: ProductGridProps) {
     const limit = 12
     const {
@@ -30,6 +32,7 @@ export default async function ProductGrid({
         category,
         sort,
         minPrice,
+        isSale,
         maxPrice,
     })
 

@@ -10,6 +10,7 @@ interface GetProductsParams {
     sort?: string
     minPrice?: number
     maxPrice?: number
+    isSale?: boolean
 }
 
 interface ProductsResponse {
@@ -17,12 +18,10 @@ interface ProductsResponse {
     meta: { total: number; page: number; limit: number }
 }
 
-// Get products with filtering and pagination
 export async function getProducts(params: GetProductsParams = {}): Promise<ProductsResponse> {
-    const { page = 1, limit = 12, search = '', category = '', sort = 'price_asc', minPrice, maxPrice } = params
+    const { page = 1, limit = 12, search = '', category = '', sort = 'price_asc', minPrice, maxPrice, isSale = false } = params
 
     try {
-        // Build query string
         const queryParams = new URLSearchParams()
         queryParams.append('page', page.toString())
         queryParams.append('limit', limit.toString())
@@ -32,6 +31,8 @@ export async function getProducts(params: GetProductsParams = {}): Promise<Produ
         if (sort) queryParams.append('sort', sort)
         if (minPrice !== undefined) queryParams.append('minPrice', minPrice.toString())
         if (maxPrice !== undefined) queryParams.append('maxPrice', maxPrice.toString())
+        if (isSale) queryParams.append('isSale', 'true')
+        console.log(params, isSale)
         console.log(`${API_URL}/products${Object.keys(params).length > 0 ? `?${queryParams.toString()}` : ''}`)
 
         const response = await fetch(
@@ -48,7 +49,6 @@ export async function getProducts(params: GetProductsParams = {}): Promise<Produ
         return data
     } catch (error) {
         console.error('Get products error:', error)
-        // Return empty result in case of error
         return {
             data: [],
             meta: { total: 0, page, limit },
