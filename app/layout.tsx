@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import React, { ReactNode } from 'react'
 import './globals.css'
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
@@ -14,6 +15,14 @@ export const metadata: Metadata = {
 }
 
 const RootLayout = ({ children }: { children: ReactNode }) => {
+    if (!cookies().getAll()) {
+        return (
+            <html lang="ru">
+                <body className={inter.className}></body>
+            </html>
+        )
+    }
+
     return (
         <html lang="ru">
             <body className={inter.className}>

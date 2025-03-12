@@ -32,8 +32,6 @@ export async function getProducts(params: GetProductsParams = {}): Promise<Produ
         if (minPrice !== undefined) queryParams.append('minPrice', minPrice.toString())
         if (maxPrice !== undefined) queryParams.append('maxPrice', maxPrice.toString())
         if (isSale) queryParams.append('isSale', 'true')
-        console.log(params, isSale)
-        console.log(`${API_URL}/products${Object.keys(params).length > 0 ? `?${queryParams.toString()}` : ''}`)
 
         const response = await fetch(
             `${API_URL}/products${Object.keys(params).length > 0 ? `?${queryParams.toString()}` : ''}`,
@@ -75,7 +73,6 @@ export async function getProductById(id: string): Promise<Product | null> {
     }
 }
 
-// Get featured products
 export async function getFeaturedProducts(): Promise<Product[]> {
     try {
         const response = await $fetch(`/products/featured`)

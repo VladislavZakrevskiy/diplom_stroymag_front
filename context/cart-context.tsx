@@ -75,7 +75,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
 
     const addToCart = async (product: Product, quantity = 1) => {
-        console.log(cart)
         if (!cart) return
 
         setIsLoading(true)

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { MapPin, Calculator } from 'lucide-react'
 import L from 'leaflet'
 
-// Add Leaflet type declaration
 declare global {
     interface Window {
         L: any
@@ -17,11 +16,9 @@ function DeliveryCalculator() {
     const [deliveryType, setDeliveryType] = useState('standard')
     const [deliveryCost, setDeliveryCost] = useState(0)
 
-    // Расчет стоимости доставки
     useEffect(() => {
         let baseCost = 0
 
-        // Базовая стоимость в зависимости от типа доставки
         if (deliveryType === 'standard') {
             baseCost = 500
         } else if (deliveryType === 'express') {
@@ -30,13 +27,10 @@ function DeliveryCalculator() {
             baseCost = 1500
         }
 
-        // Надбавка за расстояние
         const distanceCost = distance <= 5 ? 0 : (distance - 5) * 30
 
-        // Надбавка за вес
         const weightCost = weight <= 100 ? 0 : Math.ceil((weight - 100) / 100) * 200
 
-        // Итоговая стоимость
         const totalCost = baseCost + distanceCost + weightCost
 
         setDeliveryCost(totalCost)
@@ -253,16 +247,21 @@ function DeliveryMap() {
     useEffect(() => {
         // Load Leaflet CSS
         const loadLeafletCSS = () => {
-            const link = document.createElement('link')
-            link.rel = 'stylesheet'
-            link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
-            link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
-            link.crossOrigin = ''
-            document.head.appendChild(link)
+            if (typeof document !== 'undefined') {
+                const link = document.createElement('link')
+                link.rel = 'stylesheet'
+                link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'
+                link.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='
+                link.crossOrigin = ''
+                document.head.appendChild(link)
+            }
         }
 
         // Initialize map after Leaflet script is loaded
         const initMap = () => {
+            if (typeof document === 'undefined') {
+                return
+            }
             if (!document.getElementById('delivery-map')) return
 
             // Create map instance
@@ -301,6 +300,10 @@ function DeliveryMap() {
 
         // Load Leaflet script
         const loadLeafletScript = () => {
+            if (typeof document === 'undefined') {
+                return
+            }
+
             loadLeafletCSS()
 
             const script = document.createElement('script')

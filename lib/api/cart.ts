@@ -55,14 +55,12 @@ export async function updateCartItemQuantity(accessToken: string, productId: str
             },
             body: JSON.stringify({ quantity }),
         })
-        console.log('DATA')
 
         if (!response.ok) {
             throw new Error('Ошибка при обновлении количества товара')
         }
 
         const data = await response.json()
-        console.log(data)
         return data
     } catch (error) {
         console.error('Update cart item error:', error)

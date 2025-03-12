@@ -21,6 +21,10 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
 
     // Prevent scrolling when menu is open
     useEffect(() => {
+        if (typeof document === 'undefined') {
+            return
+        }
+
         document.body.style.overflow = 'hidden'
         return () => {
             document.body.style.overflow = 'auto'

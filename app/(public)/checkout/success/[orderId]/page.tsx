@@ -15,7 +15,6 @@ export default async function OrderSuccessPage({ params }: { params: { orderId: 
     }
 
     const order = await getOrderById(accessToken, params.orderId)
-    console.log(order)
 
     if (!order) {
         notFound()

@@ -2,6 +2,5 @@ import { WEB_URL } from '@/env'
 import { NextResponse } from 'next/server'
 
 export function GET() {
-    console.log('GET')
     return NextResponse.redirect(WEB_URL + '/')
 }

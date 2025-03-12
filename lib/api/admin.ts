@@ -20,7 +20,6 @@ export async function getAdminStats(accessToken: string): Promise<{
                 Authorization: `Bearer ${accessToken}`,
             },
         })
-        console.log(response)
 
         if (!response.ok) {
             throw new Error('Ошибка при получении статистики')

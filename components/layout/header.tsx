@@ -18,12 +18,14 @@ export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
     useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 0)
-        }
+        if (typeof window !== 'undefined') {
+            const handleScroll = () => {
+                setIsScrolled(window.scrollY > 0)
+            }
 
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
+            window.addEventListener('scroll', handleScroll)
+            return () => window.removeEventListener('scroll', handleScroll)
+        }
     }, [])
 
     const toggleMobileMenu = () => {

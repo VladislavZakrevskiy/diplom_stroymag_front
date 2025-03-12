@@ -15,7 +15,6 @@ export default async function AdminDashboard() {
     }
 
     const stats = await getAdminStats(accessToken)
-    console.log(stats)
 
     return (
         <div className="space-y-8">

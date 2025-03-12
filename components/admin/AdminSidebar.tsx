@@ -41,11 +41,6 @@ export default function AdminSidebar() {
             icon: Users,
             href: '/admin/users',
         },
-        {
-            title: 'Настройки',
-            icon: Settings,
-            href: '/admin/settings',
-        },
     ]
 
     const isActive = (href: string) => {

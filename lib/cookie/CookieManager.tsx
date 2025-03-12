@@ -9,6 +9,9 @@ export class CookieManager {
     }
 
     private checkSupport(): boolean {
+        if (typeof document === 'undefined') {
+            return false
+        }
         if (typeof navigator !== 'undefined' && navigator.cookieEnabled) {
             return true
         }
@@ -34,6 +37,9 @@ export class CookieManager {
             sameSite?: 'Strict' | 'Lax' | 'None'
         } = {}
     ): void {
+        if (typeof document === 'undefined') {
+            return
+        }
         if (!this.isSupported) return
 
         const encodedName = encodeURIComponent(name)
@@ -65,6 +71,9 @@ export class CookieManager {
     }
 
     public get(name: string): string | undefined {
+        if (typeof document === 'undefined') {
+            return undefined
+        }
         if (!this.isSupported) return undefined
 
         const cookies = document.cookie.split(';')
@@ -78,6 +87,10 @@ export class CookieManager {
     }
 
     public remove(name: string, path?: string, domain?: string): void {
+        if (typeof document === 'undefined') {
+            return
+        }
+
         this.set(name, '', {
             expires: -1, // Установка в прошлое
             path,
@@ -85,11 +98,17 @@ export class CookieManager {
         })
     }
 
-    public exists(name: string): boolean {
+    public exists(name: string) {
+        if (typeof document === 'undefined') {
+            return false
+        }
         return this.get(name) !== undefined
     }
 
     public getAll(): Record<string, string> {
+        if (typeof document === 'undefined') {
+            return {}
+        }
         if (!this.isSupported) return {}
 
         return document.cookie.split(';').reduce((acc, cookie) => {
