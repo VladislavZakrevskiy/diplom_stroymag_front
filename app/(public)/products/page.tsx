@@ -41,7 +41,7 @@ export default async function ProductsPage({
                 </div>
 
                 <div className="w-full md:w-3/4">
-                    <div className="mb-4 flex justify-between items-center">
+                    <div className="mb-4 grid grid-rows-2">
                         <p className="text-gray-600">
                             Найдено товаров:{' '}
                             <Suspense fallback={<span>...</span>}>

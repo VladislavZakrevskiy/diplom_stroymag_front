@@ -15,16 +15,6 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
     const { isAuthenticated, logout } = useAuth()
 
     useEffect(() => {
-        // Close menu when pathname changes
-        onClose()
-    }, [onClose])
-
-    // Prevent scrolling when menu is open
-    useEffect(() => {
-        if (typeof document === 'undefined') {
-            return
-        }
-
         document.body.style.overflow = 'hidden'
         return () => {
             document.body.style.overflow = 'auto'
@@ -32,8 +22,8 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
     }, [])
 
     return (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 md:hidden">
-            <div className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-4">
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-50 z-50 md:hidden animate-fade-in">
+            <div className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg p-4 animate-slide-in">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl font-bold">Меню</h2>
                     <button
@@ -47,24 +37,28 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
 
                 <nav className="space-y-4">
                     <Link
+                        onClick={onClose}
                         href="/products"
                         className={`block py-2 ${pathname.startsWith('/products') ? 'font-medium' : ''}`}
                     >
                         Каталог
                     </Link>
                     <Link
-                        href="/promotions"
-                        className={`block py-2 ${pathname.startsWith('/promotions') ? 'font-medium' : ''}`}
+                        onClick={onClose}
+                        href="/products?isSale=true"
+                        className={`block py-2 ${pathname.startsWith('/products?isSale=true') ? 'font-medium' : ''}`}
                     >
                         Акции
                     </Link>
                     <Link
+                        onClick={onClose}
                         href="/delivery"
                         className={`block py-2 ${pathname.startsWith('/delivery') ? 'font-medium' : ''}`}
                     >
                         Доставка
                     </Link>
                     <Link
+                        onClick={onClose}
                         href="/contacts"
                         className={`block py-2 ${pathname.startsWith('/contacts') ? 'font-medium' : ''}`}
                     >
@@ -75,10 +69,10 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
 
                     {isAuthenticated ? (
                         <>
-                            <Link href="/account" className="block py-2">
+                            <Link onClick={onClose} href="/account" className="block py-2">
                                 Личный кабинет
                             </Link>
-                            <Link href="/account/orders" className="block py-2">
+                            <Link onClick={onClose} href="/account/orders" className="block py-2">
                                 Мои заказы
                             </Link>
                             <button onClick={logout} className="block py-2 text-left w-full">
@@ -87,10 +81,10 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
                         </>
                     ) : (
                         <>
-                            <Link href="/auth/login" className="block py-2">
+                            <Link onClick={onClose} href="/auth/login" className="block py-2">
                                 Войти
                             </Link>
-                            <Link href="/auth/register" className="block py-2">
+                            <Link onClick={onClose} href="/auth/register" className="block py-2">
                                 Регистрация
                             </Link>
                         </>

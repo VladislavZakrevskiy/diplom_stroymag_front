@@ -7,25 +7,23 @@ import { useAuth } from '@/context/auth-context'
 import { useCart } from '@/context/cart-context'
 import MobileMenu from './mobile-menu'
 import SearchBar from '../ui/search-bar'
-import { Search, ShoppingCart, User, Menu, X } from 'lucide-react'
+import { Search, ShoppingCart, User, Menu } from 'lucide-react'
 
 export default function Header() {
     const pathname = usePathname()
-    const { isAuthenticated, isAdmin } = useAuth()
+    const { isAuthenticated, user } = useAuth()
     const { cart } = useCart()
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [isSearchOpen, setIsSearchOpen] = useState(false)
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const handleScroll = () => {
-                setIsScrolled(window.scrollY > 0)
-            }
-
-            window.addEventListener('scroll', handleScroll)
-            return () => window.removeEventListener('scroll', handleScroll)
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 0)
         }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     const toggleMobileMenu = () => {
@@ -58,7 +56,7 @@ export default function Header() {
                         <Link
                             href="/products?isSale=true"
                             className={`text-gray-600 hover:text-gray-800 ${
-                                pathname.startsWith('/promotions') ? 'font-medium' : ''
+                                pathname.startsWith('/products?isSale=true') ? 'font-medium' : ''
                             }`}
                         >
                             Акции
@@ -79,16 +77,6 @@ export default function Header() {
                         >
                             Контакты
                         </Link>
-                        {isAdmin && (
-                            <Link
-                                className={`text-gray-600 hover:text-gray-800 ${
-                                    pathname.startsWith('/admin') ? 'font-medium' : ''
-                                }`}
-                                href={'/admin'}
-                            >
-                                Админ Панель
-                            </Link>
-                        )}
                     </nav>
 
                     <div className="flex items-center space-x-4">
@@ -106,9 +94,9 @@ export default function Header() {
                             aria-label="Корзина"
                         >
                             <ShoppingCart size={20} />
-                            {cart && cart?.items?.length > 0 && (
+                            {cart && cart.items.length > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                                    {cart.items.reduce((a, b) => (a += b.quantity), 0)}
+                                    {cart.items.length}
                                 </span>
                             )}
                         </Link>
@@ -132,7 +120,7 @@ export default function Header() {
                             className="p-2 text-gray-600 hover:text-gray-800 rounded-full hover:bg-gray-100 md:hidden"
                             aria-label={isMobileMenuOpen ? 'Закрыть меню' : 'Открыть меню'}
                         >
-                            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                            <Menu size={20} />
                         </button>
                     </div>
                 </div>

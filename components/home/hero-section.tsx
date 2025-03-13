@@ -6,7 +6,7 @@ export default function HeroSection() {
         <div className="relative overflow-hidden rounded-xl">
             <div className="absolute inset-0 z-10 bg-gradient-to-r from-gray-900/70 to-gray-900/30" />
 
-            <div className="relative aspect-[2.5/1] w-full">
+            <div className="relative aspect-[2.5/1] max-md:aspect-[1/1] w-full">
                 <Image
                     src="/строительный.jpeg?height=600&width=1500"
                     alt="Строительные материалы"
@@ -22,7 +22,7 @@ export default function HeroSection() {
                         <h1 className="mb-4 text-4xl font-bold leading-tight md:text-5xl">
                             Строительные материалы для любых задач
                         </h1>
-                        <p className="mb-6 text-lg">
+                        <p className="mb-6 text-lg max-md:hidden">
                             Широкий ассортимент качественных строительных материалов по доступным ценам
                         </p>
                         <div className="flex flex-wrap gap-4">
