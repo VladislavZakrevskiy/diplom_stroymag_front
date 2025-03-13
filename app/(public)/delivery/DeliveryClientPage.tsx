@@ -264,36 +264,34 @@ function DeliveryMap() {
             }
             if (!document.getElementById('delivery-map')) return
 
-            // Create map instance
-            const map = L.map('delivery-map').setView([55.76, 37.64], 9)
+            const map = L.map('delivery-map').setView([47.222109, 39.718813], 9)
 
-            // Add OpenStreetMap tiles
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(map)
 
-            // Add MKAD circle (inner circle)
-            L.circle([55.76, 37.64], {
+            L.circle([47.222109, 39.718813], {
                 color: '#81c784',
                 fillColor: '#81c784',
                 fillOpacity: 0.4,
                 radius: 17000,
             })
                 .addTo(map)
-                .bindPopup('Доставка внутри МКАД')
+                .bindPopup('Доставка внутри Ростова')
 
-            // Add Moscow region circle (outer circle)
-            L.circle([55.76, 37.64], {
+            L.circle([47.222109, 39.718813], {
                 color: '#64b5f6',
                 fillColor: '#64b5f6',
                 fillOpacity: 0.4,
                 radius: 60000,
             })
                 .addTo(map)
-                .bindPopup('Доставка по Московской области')
+                .bindPopup('Доставка по Ростовской области')
 
-            // Add marker for the store
-            L.marker([55.76, 37.64]).addTo(map).bindPopup('СтройМаркет Центральный').openPopup()
+            L.marker([47.208349, 39.608203]).addTo(map).bindPopup('СтройМаркет Центральный').openPopup()
+            L.marker([47.238226, 39.599454]).addTo(map).bindPopup('СтройМаркет Южный').openPopup()
+            L.marker([47.221007, 39.570195]).addTo(map).bindPopup('СтройМаркет Западный').openPopup()
+            L.marker([47.226178, 39.749823]).addTo(map).bindPopup('СтройМаркет Восточный').openPopup()
 
             setMapLoaded(true)
         }
@@ -362,7 +360,7 @@ function DeliveryMap() {
                 <div className="rounded-lg bg-green-50 p-3">
                     <div className="flex items-center">
                         <div className="mr-2 h-4 w-4 rounded-full bg-[#81c784]"></div>
-                        <span className="font-medium">В пределах МКАД</span>
+                        <span className="font-medium">В пределах Ростова</span>
                     </div>
                     <p className="mt-1 text-sm text-gray-600">Доставка от 500 ₽</p>
                 </div>
@@ -370,7 +368,7 @@ function DeliveryMap() {
                 <div className="rounded-lg bg-blue-50 p-3">
                     <div className="flex items-center">
                         <div className="mr-2 h-4 w-4 rounded-full bg-[#64b5f6]"></div>
-                        <span className="font-medium">Московская область</span>
+                        <span className="font-medium">Ростовская область</span>
                     </div>
                     <p className="mt-1 text-sm text-gray-600">Доставка от 800 ₽ (зависит от расстояния)</p>
                 </div>

@@ -99,34 +99,34 @@ export default function ContactsPage() {
                         {
                             id: 1,
                             name: 'СтройМаркет Центральный',
-                            address: 'г. Москва, ул. Строителей, д. 10',
+                            address: 'Ростов-на-Дону, Машиностроительный переулок, 16',
                             phone: '+7 (495) 123-45-67',
                             hours: 'Ежедневно с 8:00 до 22:00',
-                            image: '/placeholder.svg?height=300&width=500&text=СтройМаркет+Центральный',
+                            image: '/центральный.jpeg?height=300&width=500&text=СтройМаркет+Центральный',
                         },
                         {
                             id: 2,
                             name: 'СтройМаркет Южный',
-                            address: 'г. Москва, Варшавское шоссе, д. 125',
+                            address: 'Ростов-на-Дону, ул. Доватора, 148',
                             phone: '+7 (495) 987-65-43',
                             hours: 'Ежедневно с 8:00 до 22:00',
-                            image: '/placeholder.svg?height=300&width=500&text=СтройМаркет+Южный',
+                            image: '/южный.jpeg?height=300&width=500&text=СтройМаркет+Южный',
                         },
                         {
                             id: 3,
                             name: 'СтройМаркет Западный',
-                            address: 'г. Москва, Можайское шоссе, д. 45',
+                            address: 'Ростов-на-Дону, Совхозная ул., 2Л',
                             phone: '+7 (495) 456-78-90',
                             hours: 'Ежедневно с 8:00 до 22:00',
-                            image: '/placeholder.svg?height=300&width=500&text=СтройМаркет+Западный',
+                            image: '/западный.jpeg?height=300&width=500&text=СтройМаркет+Западный',
                         },
                         {
                             id: 4,
                             name: 'СтройМаркет Восточный',
-                            address: 'г. Москва, Щелковское шоссе, д. 75',
+                            address: 'Ростов-на-Дону, ул. Закруткина, 70/2',
                             phone: '+7 (495) 234-56-78',
                             hours: 'Ежедневно с 8:00 до 22:00',
-                            image: '/placeholder.svg?height=300&width=500&text=СтройМаркет+Восточный',
+                            image: '/восточный.jpeg?height=300&width=500&text=СтройМаркет+Восточный',
                         },
                     ].map((store) => (
                         <div key={store.id} className="overflow-hidden rounded-lg bg-white shadow-md">
@@ -266,10 +266,10 @@ export default function ContactsPage() {
                                 <strong>ОГРН:</strong> 1157746123456
                             </li>
                             <li>
-                                <strong>Юридический адрес:</strong> 123456, г. Москва, ул. Строителей, д. 10
+                                <strong>Юридический адрес:</strong> 123456, г. Ростов-на-Дону, ул. Строителей, д. 10
                             </li>
                             <li>
-                                <strong>Фактический адрес:</strong> 123456, г. Москва, ул. Строителей, д. 10
+                                <strong>Фактический адрес:</strong> 123456, г. Ростов-на-Дону, ул. Строителей, д. 10
                             </li>
                         </ul>
                     </div>

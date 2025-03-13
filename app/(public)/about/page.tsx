@@ -14,7 +14,7 @@ export default function AboutPage() {
 
                 <div className="relative aspect-[3/1] w-full">
                     <Image
-                        src="/placeholder.svg?height=400&width=1200"
+                        src="/строительный.jpeg?height=400&width=1200"
                         alt="О компании СтройМаркет"
                         fill
                         className="object-cover"
@@ -57,7 +57,7 @@ export default function AboutPage() {
                     </div>
                     <div className="relative aspect-square overflow-hidden rounded-xl md:aspect-auto">
                         <Image
-                            src="/placeholder.svg?height=600&width=600&text=История+компании"
+                            src="/стройка.jpeg?height=600&width=600&text=История+компании"
                             alt="История компании СтройМаркет"
                             fill
                             className="object-cover"
@@ -112,17 +112,15 @@ export default function AboutPage() {
 
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
                     {[
-                        { name: 'Александр Петров', position: 'Генеральный директор' },
-                        { name: 'Елена Смирнова', position: 'Коммерческий директор' },
-                        { name: 'Дмитрий Иванов', position: 'Руководитель отдела логистики' },
-                        { name: 'Ольга Козлова', position: 'Главный бухгалтер' },
+                        { name: 'Александр Петров', position: 'Генеральный директор', src: 'гендир.jpeg' },
+                        { name: 'Владислав Комаров', position: 'Коммерческий директор', src: 'комдир.jpeg' },
+                        { name: 'Дмитрий Иванов', position: 'Руководитель отдела логистики', src: 'руклог.jpeg' },
+                        { name: 'Ольга Козлова', position: 'Главный бухгалтер', src: 'главбух.jpeg' },
                     ].map((person, index) => (
                         <div key={index} className="text-center">
                             <div className="mx-auto mb-4 aspect-square w-48 overflow-hidden rounded-full">
                                 <Image
-                                    src={`/placeholder.svg?height=200&width=200&text=${encodeURIComponent(
-                                        person.name
-                                    )}`}
+                                    src={`/${person.src}?height=200&width=200&text=${encodeURIComponent(person.name)}`}
                                     alt={person.name}
                                     width={200}
                                     height={200}

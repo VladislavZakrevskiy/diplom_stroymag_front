@@ -12,7 +12,9 @@ export default async function CategoryList() {
                     <div className="overflow-hidden rounded-lg bg-gray-100">
                         <div className="relative aspect-square">
                             <Image
-                                src={`/placeholder.svg?height=200&width=200&text=${encodeURIComponent(category.name)}`}
+                                src={`/${
+                                    category.image || 'placeholder.svg'
+                                }?height=200&width=200&text=${encodeURIComponent(category.name)}`}
                                 alt={category.name}
                                 fill
                                 className="object-cover transition-transform group-hover:scale-105"

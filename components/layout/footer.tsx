@@ -100,7 +100,7 @@ export default function Footer() {
                         <ul className="space-y-2">
                             <li className="flex items-start">
                                 <MapPin size={20} className="mr-2 mt-1 flex-shrink-0" />
-                                <span className="text-gray-300">г. Москва, ул. Строителей, д. 10</span>
+                                <span className="text-gray-300">г. Ростов-на-Дону, ул. Строителей, д. 10</span>
                             </li>
                             <li className="flex items-center">
                                 <Phone size={20} className="mr-2 flex-shrink-0" />
