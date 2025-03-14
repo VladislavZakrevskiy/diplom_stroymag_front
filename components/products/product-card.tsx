@@ -33,7 +33,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
                 <div className="flex items-center gap-2 mb-3">
                     <span className="text-lg font-bold">{formatPrice(product.price)}</span>
-                    {product.discount && (
+                    {product.discount !== 0 && product.discount && (
                         <span className="text-sm text-gray-500 line-through">
                             {formatPrice(product.price * (product.discount / 100 + 1))}
                         </span>
