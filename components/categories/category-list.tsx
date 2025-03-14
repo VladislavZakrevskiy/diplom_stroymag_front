@@ -12,8 +12,8 @@ export default async function CategoryList() {
                     <div className="overflow-hidden rounded-lg bg-gray-100">
                         <div className="relative aspect-square">
                             <Image
-                                src={`/${
-                                    category.image || 'placeholder.svg'
+                                src={`${
+                                    category.image || '/placeholder.svg'
                                 }?height=200&width=200&text=${encodeURIComponent(category.name)}`}
                                 alt={category.name}
                                 fill
