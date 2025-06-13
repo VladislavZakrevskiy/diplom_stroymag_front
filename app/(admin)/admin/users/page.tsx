@@ -56,7 +56,6 @@ export default async function AdminUsersPage({
                                     <th className="p-4 font-medium">Email</th>
                                     <th className="p-4 font-medium">Дата регистрации</th>
                                     <th className="p-4 font-medium">Заказов</th>
-                                    <th className="p-4 font-medium">Статус</th>
                                     <th className="p-4 font-medium">Действия</th>
                                 </tr>
                             </thead>
@@ -71,17 +70,6 @@ export default async function AdminUsersPage({
                                         <td className="p-4">{user.email}</td>
                                         <td className="p-4">{formatDate(user.createdAt)}</td>
                                         <td className="p-4">{user.ordersCount}</td>
-                                        <td className="p-4">
-                                            <span
-                                                className={`inline-block rounded-full px-2 py-1 text-xs font-medium ${
-                                                    user.isActive
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : 'bg-red-100 text-red-800'
-                                                }`}
-                                            >
-                                                {user.isActive ? 'Активен' : 'Заблокирован'}
-                                            </span>
-                                        </td>
                                         <td className="p-4">
                                             <Link
                                                 href={`/admin/users/${user.id}`}

@@ -115,7 +115,14 @@ export async function updateProduct(accessToken: string, productId: string, prod
                 Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(productData),
+            body: JSON.stringify({
+                ...(productData.name ? {"name": productData.name} : {}),
+                ...(productData.price ? {"price": productData.price} : {}),
+                ...(productData.categoryId ? {"categoryId": productData.categoryId} : {}),
+                ...(productData.description ? {"description": productData.description} : {}),
+                ...(productData.stock ? {"stock": productData.stock} : {}),
+                ...(productData.image ? {"images": [productData.image]} : {})
+            }),
         })
 
         if (!response.ok) {

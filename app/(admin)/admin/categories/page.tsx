@@ -47,14 +47,6 @@ export default async function AdminCategoriesPage() {
                                                 >
                                                     <Edit className="h-4 w-4" />
                                                 </Link>
-                                                <button
-                                                    className="rounded-md bg-red-100 px-3 py-1 text-sm font-medium text-red-600 hover:bg-red-200"
-                                                    // onClick={() => {
-                                                    //     // Delete functionality will be implemented client-side
-                                                    // }}
-                                                >
-                                                    <Trash2 className="h-4 w-4" />
-                                                </button>
                                             </div>
                                         </td>
                                     </tr>
