@@ -85,7 +85,14 @@ export async function createProduct(accessToken: string, productData: any): Prom
                 Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(productData),
+            body: JSON.stringify({
+                "name": productData.name,
+                "price": productData.price,
+                "categoryId": productData.categoryId,
+                "description": productData.description,
+                "stock": productData.stock,
+                "images": [productData.image]
+            }),
         })
 
         if (!response.ok) {
